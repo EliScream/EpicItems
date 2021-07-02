@@ -1,0 +1,48 @@
+package me.arace863.epicitems;
+
+import me.arace863.epicitems.Commands.Commands;
+import me.arace863.epicitems.Events.*;
+import me.arace863.epicitems.GUI.GUImoveItem;
+import me.arace863.epicitems.GUI.ItemsGUI;
+import me.arace863.epicitems.Items.ItemManager;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public final class EpicItems extends JavaPlugin {
+
+    @Override
+    public void onEnable() {
+        // Plugin startup logic
+
+        System.out.println("--------------------------------------");
+        System.out.println(" ");
+        System.out.println("EpicItems plugin is starting up!");
+        System.out.println("");
+        System.out.println("           V1.2");
+        System.out.println(" ");
+        System.out.println("--------------------------------------");
+        ItemManager.init();
+        getCommand("endermansword").setExecutor(new Commands());
+        getCommand("acesword").setExecutor(new Commands());
+        getCommand("rpg").setExecutor(new Commands());
+        getCommand("bonemerang").setExecutor(new Commands());
+        getCommand("items").setExecutor(new ItemsGUI());
+        getCommand("grapplinghook").setExecutor(new Commands());
+        getServer().getPluginManager().registerEvents(new BonemerangEvent(this), this);
+        getServer().getPluginManager().registerEvents(new RocketLauncherEvent(this), this);
+        getServer().getPluginManager().registerEvents(new EndermanSwordEvent(), this);
+        getServer().getPluginManager().registerEvents(new AceSwordEvent(), this);
+        getServer().getPluginManager().registerEvents(new GUImoveItem(), this);
+        getServer().getPluginManager().registerEvents(new GrapplingHookEvent(), this);
+
+    }
+
+    @Override
+    public void onDisable() {
+        // Plugin shutdown logic
+        System.out.println("--------------------------------------");
+        System.out.println(" ");
+        System.out.println("EpicItems plugin is shutting down");
+        System.out.println("");
+        System.out.println("--------------------------------------");
+    }
+}
