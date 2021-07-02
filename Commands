@@ -1,0 +1,60 @@
+package me.arace863.epicitems.Commands;
+
+import me.arace863.epicitems.Items.ItemManager;
+import org.bukkit.ChatColor;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+public class Commands implements CommandExecutor {
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (!(sender instanceof Player)) {
+            sender.sendMessage("Only players can use that command!");
+            return true;
+        }
+        Player player = (Player) sender;
+        if (player.hasPermission("op")){
+            if (cmd.getName().equalsIgnoreCase("endermansword")) {
+                player.getInventory().addItem(ItemManager.EndermanSword);
+                player.sendMessage(ChatColor.GREEN + "Gave the §dEnderman Sword§a item!");
+                player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10.0F, 5.0F);
+                player.getWorld().spawnParticle(Particle.LANDING_LAVA, player.getLocation(), 10);
+            }
+            if (cmd.getName().equalsIgnoreCase("acesword")) {
+                player.getInventory().addItem(ItemManager.AceSword);
+                player.sendMessage(ChatColor.GREEN + "Gave the §4Ace Sword§a item!");
+                player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10.0F, 5.0F);
+                player.getWorld().spawnParticle(Particle.LANDING_LAVA, player.getLocation(), 10);
+            }
+            if (cmd.getName().equalsIgnoreCase("rpg")) {
+                player.getInventory().addItem(ItemManager.Rpg);
+                player.sendMessage(ChatColor.GREEN + "Gave the §6Rocket Launcher§a item!");
+                player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10.0F, 5.0F);
+                player.getWorld().spawnParticle(Particle.LANDING_LAVA, player.getLocation(), 10);
+            }
+            if (cmd.getName().equalsIgnoreCase("bonemerang")) {
+                player.getInventory().addItem(ItemManager.Bonemerang);
+                player.sendMessage(ChatColor.GREEN + "Gave the §6Bonemerang §aitem!");
+                player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10.0F, 5.0F);
+                player.getWorld().spawnParticle(Particle.LANDING_LAVA, player.getLocation(), 10);
+            }
+            if (cmd.getName().equalsIgnoreCase("grapplinghook")) {
+                player.getInventory().addItem(ItemManager.GrapplingHook);
+                player.sendMessage(ChatColor.GREEN + "Gave the Grappling Hook item!");
+                player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10.0F, 5.0F);
+                player.getWorld().spawnParticle(Particle.LANDING_LAVA, player.getLocation(), 10);
+            }
+
+        }else{
+            player.sendMessage(ChatColor.RED + "You do not have permission to use this command!");
+            player.getWorld().spawnParticle(Particle.BARRIER, player.getLocation(), 10);
+        }
+
+        return true;
+    }
+}
