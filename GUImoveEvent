@@ -1,0 +1,62 @@
+package me.arace863.epicitems.GUI;
+
+import me.arace863.epicitems.Items.ItemManager;
+import org.bukkit.ChatColor;
+import org.bukkit.Sound;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
+
+public class GUImoveItem implements Listener {
+
+    @EventHandler
+    public void clickEvent(InventoryClickEvent e){
+
+        //Check to see if its the GUI menu
+        if(e.getView().getTitle().equalsIgnoreCase(ChatColor.RED + "Epic Items")){
+            Player player = (Player) e.getWhoClicked();
+            //Determine what they selected and what to do
+            switch(e.getCurrentItem().getType()){
+                case IRON_SWORD:
+                    player.closeInventory();
+                    player.getInventory().addItem(ItemManager.AceSword);
+                    player.sendMessage(ChatColor.GREEN + "Gave the §4Ace Sword§a item!");
+                    player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10.0F, 5.0F);
+                    break;
+
+                case DIAMOND_SWORD:
+                    player.closeInventory();
+                    player.getInventory().addItem(ItemManager.EndermanSword);
+                    player.sendMessage(ChatColor.GREEN + "Gave the §6Enderman Sword§a item!");
+                    player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10.0F, 5.0F);
+                    break;
+
+                case BONE:
+                    player.closeInventory();
+                    player.getInventory().addItem(ItemManager.Bonemerang);
+                    player.sendMessage(ChatColor.GREEN + "Gave the §6Bonemerang§a item!");
+                    player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10.0F, 5.0F);
+                    break;
+
+                case GOLDEN_SHOVEL:
+                    player.closeInventory();
+                    player.getInventory().addItem(ItemManager.Rpg);
+                    player.sendMessage(ChatColor.GREEN + "Gave the §6Rocket Launcher§a item!");
+                    player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10.0F, 5.0F);
+                    break;
+
+                case FISHING_ROD:
+                    player.closeInventory();
+                    player.getInventory().addItem(ItemManager.GrapplingHook);
+                    player.sendMessage(ChatColor.GREEN + "Gave the Grappling Hook item!");
+                    player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10.0F, 5.0F);
+                    break;
+            }
+
+            e.setCancelled(true); //So they cant take the items
+        }
+
+    }
+
+}
