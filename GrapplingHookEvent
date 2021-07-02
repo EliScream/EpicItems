@@ -1,0 +1,28 @@
+package me.arace863.epicitems.Events;
+
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerFishEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+public class GrapplingHookEvent implements Listener {
+
+    @EventHandler
+    public void onFish(PlayerFishEvent event){
+        Player player = event.getPlayer();
+        ItemStack item = player.getInventory().getItemInMainHand();
+        ItemMeta meta = item.getItemMeta();
+        String name = meta.getDisplayName();
+        if (name.equals("§aGrappling Hook")){
+            if (event.getState().equals(PlayerFishEvent.State.REEL_IN)){
+                Location playerLocation = player.getLocation();
+                Location hookLocation = event.getHook().getLocation();
+                Location change = hookLocation.subtract(playerLocation);
+                player.setVelocity(change.toVector().multiply(0.3));
+            }
+        }
+    }
+}
