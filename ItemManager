@@ -1,0 +1,142 @@
+package me.arace863.epicitems.Items;
+
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemFlag;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+public class ItemManager {
+
+    public static ItemStack EndermanSword;
+    public static ItemStack AceSword;
+    public static ItemStack Rpg;
+    public static ItemStack Bonemerang;
+    public static ItemStack GrapplingHook;
+
+    public static void init() {
+        createEndermanSword();
+        createAceSword();
+        createRpg();
+        createBonemerang();
+        createGrapplingHook();
+    }
+
+    private static void createEndermanSword(){
+        ItemStack item = new ItemStack(Material.DIAMOND_SWORD, 1);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName("§dEnderman Sword");
+        List<String> lore = new ArrayList<>();
+        lore.add("§7Damage: §c+20");
+        lore.add("");
+        lore.add("§6Item Abulity: §e§lRIGHT CLICK");
+        lore.add("§7Teleport 8 blocks ahead and gain speed");
+        lore.add("");
+        lore.add(ChatColor.LIGHT_PURPLE + "§lMYTHIC");
+        meta.setLore(lore);
+        meta.setUnbreakable(true);
+        AttributeModifier damage = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", 20, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, damage);
+        AttributeModifier speed = new AttributeModifier(UUID.randomUUID(), "generic.movementSpeed", 0.05, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        meta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, speed);
+        meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        item.setItemMeta(meta);
+        EndermanSword = item;
+    }
+
+    private static void createAceSword(){
+        ItemStack item = new ItemStack(Material.IRON_SWORD, 1);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName("§4♠ Ace Sword");
+        List<String> lore = new ArrayList<>();
+        lore.add("§7Damage: §c+50");
+        lore.add("");
+        lore.add("§6Item Ability: §e§lRIGHT CLICK");
+        lore.add("§7Teleport 8 blocks ahead and gain");
+        lore.add(ChatColor.GRAY + "speed while exploding surrounding blocks");
+        lore.add("");
+        lore.add(ChatColor.DARK_RED + "§lSUPREME");
+        meta.setLore(lore);
+        meta.setUnbreakable(true);
+        AttributeModifier damage = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", 50, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, damage);
+        AttributeModifier attackspeed = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", 100, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackspeed);
+        meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        item.setItemMeta(meta);
+        AceSword = item;
+    }
+
+    private static void createRpg(){
+        ItemStack item = new ItemStack(Material.GOLDEN_SHOVEL, 1);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName("§6Rocket Launcher");
+        List<String> lore = new ArrayList<>();
+        lore.add("§7Damage: §c+70");
+        lore.add("");
+        lore.add("§6Item Ability: Ricochet Rocket §e§lRIGHT CLICK");
+        lore.add("§7Fires a rocket that explodes for");
+        lore.add("§c1,000 §7damage and when ricocheting");
+        lore.add("§7off the ground creates explosions for");
+        lore.add("§7half the damage");
+        lore.add("");
+        lore.add(ChatColor.GOLD + "§lLEGENDARY");
+        meta.setLore(lore);
+        AttributeModifier damage = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", 70.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, damage);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        meta.setUnbreakable(true);
+        item.setItemMeta(meta);
+        Rpg = item;
+    }
+
+    private static void createBonemerang(){
+        ItemStack item = new ItemStack(Material.BONE, 1);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName("§6Bonemerang");
+        item.addUnsafeEnchantment(Enchantment.PIERCING, 100);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        List<String> lore = new ArrayList<>();
+        lore.add("§7Damage: §c+70");
+        lore.add("");
+        lore.add("§6Item Ability: Swing §e§lRIGHT CLICK");
+        lore.add("§7Throw bone a short distance, dealing");
+        lore.add("§7the damage an arrow would.");
+        lore.add("§7Deals §cdouble damage§7 when coming back.");
+        lore.add("§7Pierces up to §e10 §7foes");
+        lore.add(" ");
+        lore.add("§6§lLEGENDARY BOW");
+        meta.setLore(lore);
+        item.setItemMeta(meta);
+        Bonemerang = item;
+    }
+
+    private static void createGrapplingHook(){
+        ItemStack item = new ItemStack(Material.FISHING_ROD, 1);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName("§aGrappling Hook");
+        List<String> lore = new ArrayList<>();
+        lore.add("§7Travel around in style using");
+        lore.add("§7this Grappling Hook.");
+        lore.add(" ");
+        lore.add("§a§lUNCOMMON");
+        meta.setLore(lore);
+        item.setItemMeta(meta);
+        GrapplingHook = item;
+    }
+}
