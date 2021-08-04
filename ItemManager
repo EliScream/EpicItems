@@ -42,7 +42,7 @@ public class ItemManager {
         lore.add("");
         lore.add(ChatColor.LIGHT_PURPLE + "§lMYTHIC");
         meta.setLore(lore);
-        meta.setUnbreakable(true);
+        meta.setUnbreakable(false);
         AttributeModifier damage = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", 20, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, damage);
         AttributeModifier speed = new AttributeModifier(UUID.randomUUID(), "generic.movementSpeed", 0.05, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
@@ -67,7 +67,7 @@ public class ItemManager {
         lore.add("");
         lore.add(ChatColor.DARK_RED + "§lSUPREME");
         meta.setLore(lore);
-        meta.setUnbreakable(true);
+        meta.setUnbreakable(false);
         AttributeModifier damage = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", 50, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, damage);
         AttributeModifier attackspeed = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", 100, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
@@ -99,7 +99,7 @@ public class ItemManager {
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
-        meta.setUnbreakable(true);
+        meta.setUnbreakable(false);
         item.setItemMeta(meta);
         Rpg = item;
     }
